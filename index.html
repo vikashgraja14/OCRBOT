@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF</title>
+</head>
+<body>
+    <h1>Upload PDF</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="category">Select category:</label>
+        <select name="category" id="category">
+            <option value="contracts">Contracts</option>
+            <option value="policies">Policies</option>
+            <option value="iso">ISO</option>
+        </select>
+        <br><br>
+        <input type="file" name="file" accept=".pdf">
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
