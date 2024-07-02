@@ -1,0 +1,9 @@
+        body {
+            background-color: rgb(240, 240, 240);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover; /* Use 'cover' to ensure the image covers the entire background */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            font-family: Arial, sans-serif; /* Use a generic font family */
+        }

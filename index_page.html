@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Index Page</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>Filename</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in df2.iterrows() %}
+            <tr>
+                <td>{{ index }}</td>
+                <td>{{ row['filename'] }}</td>
+                <td>{{ row['category'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

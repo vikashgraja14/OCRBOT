@@ -1,24 +1,34 @@
-#This is supposed to be in templates folder of same directory
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload PDF</title>
+    <title>Search Interface</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles2.css') }}">
 </head>
 <body>
-    <h1>Upload PDF</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="category">Select category:</label>
-        <select name="category" id="category">
-            <option value="contracts">Contracts</option>
-            <option value="policies">Policies</option>
-            <option value="iso">ISO</option>
-        </select>
-        <br><br>
-        <input type="file" name="file" accept=".pdf">
-        <br><br>
-        <input type="submit" value="Upload">
+    <h1>
+        <img src="/static/search bot.png"  class="icon"> <!-- Add your icon image here -->
+    </h1>
+    <h2>CONTRACTS, POLICIES, ISO SEARCH BOT</h2> <!-- Subheading added here -->
+
+    <form action="/search" method="get">
+    <br>
+        <label for="keywords">KEYWORDS:</label>
+        <input type="text" id="keywords" name="keywords" required><br><br>
+        <label for="category">CATEGORY:</label>
+        <select id="category" name="category">
+            <option value="All">All</option>
+            <option value="Contracts">Contracts</option>
+            <option value="Policies">Policies</option>
+            <option value="ISO">ISO</option>
+            <option value="GDMS">GDMS</option>
+        </select><br><br>
+        <!-- Search button -->
+        <input type="submit" value="Search">
+
+        <!-- Index button -->
+        <input type="button" value="Index" onclick="location.href='/index_page';">
     </form>
 </body>
 </html>
