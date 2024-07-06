@@ -15,7 +15,7 @@ os.chdir(base_directory)
 # Directory where CSS file is located
 css_directory = os.path.join(base_directory, 'static')
 
-# Base directory where your files are located
+# Directory where PDF images are stored
 base_directory = r"Policies"
 dest_folder = r"pdfimages"
 
@@ -48,7 +48,6 @@ def download_file(base_path, category, file_name):
         'Policies': os.path.join(base_path, 'Policies'),
         'GDMS': os.path.join(base_path, 'GDMS')
     }
-
     if category not in category_base_path:
         return f"Invalid category: {category}"
 
@@ -76,7 +75,6 @@ def view_page_link(category, filename, pagenumber):
 def search_data(db_name, keywords, category):
     conn = sqlite3.connect(db_name)
 
-    # Prepare SQL query to select specific columns
     if category and category != 'All':
         query = (f"SELECT filename, '{category}' AS category, pagenumber FROM "
                  f"{category.lower()} WHERE text LIKE ? OR filename LIKE ?")
@@ -94,7 +92,6 @@ def search_data(db_name, keywords, category):
             '%' + keywords + '%', '%' + keywords + '%',
             '%' + keywords + '%', '%' + keywords + '%',
         )
-
     # Fetch data with category
     df = pd.read_sql_query(query, conn, params=params)
     conn.close()
@@ -119,7 +116,6 @@ def get_df2(db_name):
              "'ISO' AS category, pagenumber FROM iso WHERE pagenumber = 1 UNION SELECT filename, "
              "'GDMS' AS category, pagenumber FROM GDMS WHERE pagenumber = 1"
              )
-    # Fetch data
     df2 = pd.read_sql_query(query, conn)
     conn.close()
     df2.reset_index(drop=True, inplace=True)
